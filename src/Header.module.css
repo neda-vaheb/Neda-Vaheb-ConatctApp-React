@@ -1,33 +1,32 @@
 .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-  .delete {
-    padding: 8px 10px;
-    border: 1px solid gray;
-    background-color: white;
-    color: gray;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in;
-  }
-  .delete:hover {
-    border: 1px solid rgb(245, 71, 71);
-    color: rgb(245, 71, 71);
-  }
-  .add {
-    padding: 8px 10px;
-    margin-left: 10px;
-    border: none;
-    background-color: blue;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in;
-  }
-  .add:hover {
-    opacity: 0.5;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.delete {
+  padding: 8px 10px;
+  border: 1px solid gray;
+  background-color: white;
+  color: gray;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.delete:hover {
+  border: 1px solid rgb(245, 71, 71);
+  color: rgb(245, 71, 71);
+}
+.add {
+  padding: 8px 10px;
+  margin-left: 10px;
+  border: none;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.add:hover {
+  opacity: 0.5;
+}

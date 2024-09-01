@@ -7,7 +7,6 @@ import phoneIcon from "./assets/image/phone.svg";
 import trashIcon from "./assets/image/trash.svg";
 import edit from "./assets/image/edit.svg";
 
-
 function ContactList({
   check,
   setCheck,
