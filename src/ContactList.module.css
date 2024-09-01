@@ -79,3 +79,19 @@
   .contactItem input {
     width: auto;
   }
+  @media (max-width: 750px) {
+    .userEmail {
+      display: none !important;
+    }
+   
+  }
+  @media (max-width: 580px) {
+    .contactItem .trash,
+    .contactItem .phone {
+      display: none !important;
+    }
+    .contactItem {
+      justify-content: flex-start;
+    }
+  }
+  

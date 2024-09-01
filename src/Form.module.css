@@ -109,3 +109,26 @@
   .alert {
     color: rgb(248, 101, 101);
   }
+  @media (max-width: 750px) {
+    form {
+      width: 500px;
+    }
+  }
+  @media (max-width: 580px) {
+    form {
+      width: 350px;
+    }
+    .nameIdentity,
+    .personalInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 10px auto;
+    }
+    .nameIdentity > div label,
+    .personalInfo > div label {
+      margin-top: 10px;
+    }
+  }
+  
