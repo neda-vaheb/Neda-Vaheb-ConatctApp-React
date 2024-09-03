@@ -3,11 +3,20 @@ import Header from "./Header.jsx";
 import Search from "./Search.jsx";
 import Form from "./Form.jsx";
 
+
 import ContactList from "./ContactList.jsx";
+import Input from "./input.jsx";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-
+  const [contact, setContact] = useState({
+    id: "",
+    name: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    check: false,
+  });
   const [contacts, setContacts] = useState(
     JSON.parse(localStorage.getItem("contacts")) || []
   );
@@ -47,7 +56,10 @@ function App() {
           contacts={contacts}
           setContacts={setContacts}
           setShowForm={setShowForm}
+          contct={contact}
         />
+          
+       
       )}
       {contacts.length ? (
         <ContactList
