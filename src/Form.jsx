@@ -13,11 +13,7 @@ function Form({ contacts, setContacts, setShowForm }) {
     check: false,
   });
 
-  // const changeHandler = (event) => {
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   setContact((contact) => ({ ...contact, [name]: value }));
-  // };
+
   const submitHandler = (event) => {
     event.preventDefault();
     if (

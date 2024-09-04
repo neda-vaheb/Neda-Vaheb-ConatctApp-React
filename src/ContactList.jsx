@@ -8,8 +8,6 @@ import trashIcon from "./assets/image/trash.svg";
 import edit from "./assets/image/edit.svg";
 
 function ContactList({
-  check,
-  setCheck,
   contacts,
   deleteHandlerItem,
   setContacts,
@@ -30,12 +28,14 @@ function ContactList({
     const editContact = contacts.find((contact) => id === contact.id);
     seteditContact(editContact);
   };
-  const checkHandler = (id) => {
-    setCheck((check) => !check);
-    if (check) {
+  const checkHandler = (event ,id) => {
+   
+    if (event.target.checked) {
       const checkContacts = contacts.filter((contact) => contact.id !== id);
+      localStorage.setItem("contacts" , JSON.stringify(checkContacts))
       setCheckContact(checkContacts);
-    } else return;
+    } else {
+return;    }
   };
   return (
     <div className={styles.ContactListContainer}>
@@ -43,9 +43,8 @@ function ContactList({
         {contacts.map((contact) => (
           <li key={contact.id} className={styles.contactItem}>
             <input
-              checked={check}
               type="checkBox"
-              onChange={() => checkHandler(contact.id)}
+              onChange={() => checkHandler(event,contact.id)}
               name={contact.id}
               value={contact.id}
             />

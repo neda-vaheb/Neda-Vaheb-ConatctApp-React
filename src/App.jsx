@@ -9,19 +9,10 @@ import Input from "./input.jsx";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const [contact, setContact] = useState({
-    id: "",
-    name: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    check: false,
-  });
   const [contacts, setContacts] = useState(
     JSON.parse(localStorage.getItem("contacts")) || []
   );
   const [search, setSearch] = useState("");
-  const [check, setCheck] = useState(false);
   const [checkContact, setCheckContact] = useState([]);
 
   const deleteHandlerItem = (id) => {
@@ -56,7 +47,6 @@ function App() {
           contacts={contacts}
           setContacts={setContacts}
           setShowForm={setShowForm}
-          contct={contact}
         />
           
        
@@ -65,8 +55,6 @@ function App() {
         <ContactList
           contacts={contacts}
           deleteHandlerItem={deleteHandlerItem}
-          check={check}
-          setCheck={setCheck}
           setContacts={setContacts}
           checkContact={checkContact}
           setCheckContact={setCheckContact}
