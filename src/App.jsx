@@ -2,12 +2,10 @@ import { useState } from "react";
 import Header from "./Header.jsx";
 import Search from "./Search.jsx";
 import Form from "./Form.jsx";
-
-
 import ContactList from "./ContactList.jsx";
-import Input from "./input.jsx";
 
 function App() {
+  let newContact = [];
   const [showForm, setShowForm] = useState(false);
   const [contacts, setContacts] = useState(
     JSON.parse(localStorage.getItem("contacts")) || []
@@ -21,9 +19,30 @@ function App() {
   };
 
   const deleteHandler = () => {
-    setContacts(checkContact);
+    
+  //  for(let i=0; i<=contacts.length;i++){
+  //   for(let j=i ; j<=checkContact.length;j++){
+  //     if(contacts[i].id !== checkContact[j]){
+       
+  //     newContact.push(contacts[i])
+  //     console.log(contacts[i]);
+  //     }else{
+        
+  //     }
+  //     }
+  //   }
+  //  console.log(newContact)
+  // };
+ console.log(checkContact.length) ;
+  for(let i=1 ; i<checkContact.length;i++){
+    newContact =  contacts.filter(contact => contact.id !== checkContact[i])
+    console.log(newContact);
+  }
+  
   };
+
   const allHandlere = () => {
+
     setContacts(JSON.parse(localStorage.getItem("contacts")));
   };
 
@@ -36,7 +55,6 @@ function App() {
         setContacts={setContacts}
       />
       <Header
-        check={check}
         showForm={showForm}
         setShowForm={setShowForm}
         allHandlere={allHandlere}
@@ -48,8 +66,6 @@ function App() {
           setContacts={setContacts}
           setShowForm={setShowForm}
         />
-          
-       
       )}
       {contacts.length ? (
         <ContactList

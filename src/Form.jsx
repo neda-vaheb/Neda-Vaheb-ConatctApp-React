@@ -10,9 +10,8 @@ function Form({ contacts, setContacts, setShowForm }) {
     lastName: "",
     email: "",
     phone: "",
-    check: false,
+  
   });
-
 
   const submitHandler = (event) => {
     event.preventDefault();

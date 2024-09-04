@@ -1,5 +1,5 @@
 import Edit from "./Edit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./ContactList.module.css";
 import emailIcon from "./assets/image/email.svg";
@@ -28,15 +28,17 @@ function ContactList({
     const editContact = contacts.find((contact) => id === contact.id);
     seteditContact(editContact);
   };
-  const checkHandler = (event ,id) => {
-   
+  const checkHandler = (event, id) => {
     if (event.target.checked) {
-      const checkContacts = contacts.filter((contact) => contact.id !== id);
-      localStorage.setItem("contacts" , JSON.stringify(checkContacts))
-      setCheckContact(checkContacts);
+      setCheckContact(contact=>[...contact , id])
     } else {
-return;    }
-  };
+     setCheckContact(contact=>contact.filter((contact) => id !== contact.id));
+
+    }
+  
+ 
+};
+
   return (
     <div className={styles.ContactListContainer}>
       <ul className={styles.contactsList}>
@@ -44,7 +46,7 @@ return;    }
           <li key={contact.id} className={styles.contactItem}>
             <input
               type="checkBox"
-              onChange={() => checkHandler(event,contact.id)}
+              onChange={() => checkHandler(event, contact.id)}
               name={contact.id}
               value={contact.id}
             />
