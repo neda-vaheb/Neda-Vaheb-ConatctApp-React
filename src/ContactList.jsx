@@ -1,5 +1,6 @@
 import Edit from "./Edit";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { RiCheckboxBlankFill } from "react-icons/ri";
 
 import styles from "./ContactList.module.css";
 import emailIcon from "./assets/image/email.svg";
@@ -11,8 +12,8 @@ function ContactList({
   contacts,
   deleteHandlerItem,
   setContacts,
-  checkContact,
   setCheckContact,
+  setcheck
 }) {
   const [isEdit, setIsEdit] = useState(false);
 
@@ -28,10 +29,13 @@ function ContactList({
     const editContact = contacts.find((contact) => id === contact.id);
     seteditContact(editContact);
   };
-  const checkHandler = (event, id) => {
+  const checkHandler = (event,id) => {
+
     if (event.target.checked) {
+      setcheck(true);
       setCheckContact(contact=>[...contact , id])
     } else {
+      setcheck(false);
      setCheckContact(contact=>contact.filter((contact) => id !== contact.id));
 
     }
@@ -50,6 +54,10 @@ function ContactList({
               name={contact.id}
               value={contact.id}
             />
+            {/* <button onClick={(e)=>checkHandler(e)} value={contact.id}>
+            <RiCheckboxBlankFill  color={check ? "blue" : "white"}/>
+            </button> */}
+           
             <div className={styles.abbreviated}>
               <span>
                 {contact.name.split("")[0]}

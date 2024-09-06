@@ -10,6 +10,7 @@ function App() {
   const [contacts, setContacts] = useState(
     JSON.parse(localStorage.getItem("contacts")) || []
   );
+  const [check ,setcheck] = useState(false);
   const [search, setSearch] = useState("");
   const [checkContact, setCheckContact] = useState([]);
 
@@ -19,27 +20,33 @@ function App() {
   };
 
   const deleteHandler = () => {
+    if(check){
+      const newList= contacts.filter(item => item.id !== contacts.id);
+      setCheckContact(newList);
+    }else{
+
+    }
+
+    newContact = contacts.filter(item => !checkContact.includes(item.id));
+    setContacts(newContact);
+    localStorage.setItem("contacts",JSON.stringify(newContact));
+    console.log(checkContact)
+    
     
   //  for(let i=0; i<=contacts.length;i++){
   //   for(let j=i ; j<=checkContact.length;j++){
   //     if(contacts[i].id !== checkContact[j]){
-       
-  //     newContact.push(contacts[i])
-  //     console.log(contacts[i]);
-  //     }else{
-        
+  //      newContact .push(contacts[i])
+     
   //     }
+
   //     }
   //   }
   //  console.log(newContact)
-  // };
- console.log(checkContact.length) ;
-  for(let i=1 ; i<checkContact.length;i++){
-    newContact =  contacts.filter(contact => contact.id !== checkContact[i])
-    console.log(newContact);
-  }
-  
   };
+
+
+  
 
   const allHandlere = () => {
 
@@ -72,8 +79,8 @@ function App() {
           contacts={contacts}
           deleteHandlerItem={deleteHandlerItem}
           setContacts={setContacts}
-          checkContact={checkContact}
           setCheckContact={setCheckContact}
+          setcheck={setcheck}
         />
       ) : (
         <p className="alertText"> No Contacts</p>
