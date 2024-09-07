@@ -10,7 +10,7 @@ function Header({ showForm, setShowForm, deleteHandler, allHandlere }) {
     <>
       <div className={styles.headerContainer}>
         <h3>Contacts</h3>
-        <div>
+        <div className={styles.ButtonContainer}>
           <button className={styles.delete} onClick={deleteHandler}>
             Delete
           </button>

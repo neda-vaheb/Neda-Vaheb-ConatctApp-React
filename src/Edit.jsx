@@ -1,7 +1,7 @@
 import styles from "./Form.module.css";
 import Input from "./input";
 function Edit({
-  editContact: { id},
+  editContact: { id },
   seteditContact,
   editContact,
   contacts,
@@ -31,7 +31,7 @@ function Edit({
           <h5>Add Contact</h5>
           <button onClick={closeHandler}>X</button>
         </div>
-     
+
         <Input contact={editContact} setContact={seteditContact} />
 
         <div className={styles.formButtons}>

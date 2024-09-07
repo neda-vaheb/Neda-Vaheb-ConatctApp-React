@@ -7,10 +7,10 @@
   padding: 20px;
 }
 
-.serachContainer img {
+.SearchIcon {
   width: 15px;
   height: 15px;
-  margin: 0 8px;
+  margin: 0 7px;
 }
 .serachContainer input {
   width: 50%;

@@ -30,3 +30,23 @@
 .add:hover {
   opacity: 0.5;
 }
+@media (max-width: 580px){
+  .headerContainer{
+    justify-content: space-between;
+  }
+  .ButtonContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .delete {
+    padding: 5px 6px;
+   
+  }
+
+  .add {
+    padding: 5px 6px;
+    margin-left: 3px;
+  
+  }
+}

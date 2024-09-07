@@ -10,7 +10,6 @@ function Form({ contacts, setContacts, setShowForm }) {
     lastName: "",
     email: "",
     phone: "",
-  
   });
 
   const submitHandler = (event) => {

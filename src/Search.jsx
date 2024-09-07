@@ -22,9 +22,7 @@ function Search({ search, setSearch, contacts, setContacts }) {
     <div className={styles.serachContainer}>
       <button onClick={searchHandler}>
         Search
-        <CiSearch />
-
-        
+        <CiSearch className={styles.SearchIcon}/>
       </button>
 
       <input
