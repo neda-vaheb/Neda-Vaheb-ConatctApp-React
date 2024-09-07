@@ -1,19 +1,18 @@
 import Edit from "./Edit";
 import { useState } from "react";
-import { RiCheckboxBlankFill } from "react-icons/ri";
+import { MdOutlineEmail } from "react-icons/md";
+import { LuPhone } from "react-icons/lu";
+import { GoTrash } from "react-icons/go";
+import { FaRegEdit } from "react-icons/fa";
 
 import styles from "./ContactList.module.css";
-import emailIcon from "./assets/image/email.svg";
-import phoneIcon from "./assets/image/phone.svg";
-import trashIcon from "./assets/image/trash.svg";
-import edit from "./assets/image/edit.svg";
 
 function ContactList({
   contacts,
   deleteHandlerItem,
   setContacts,
   setCheckContact,
-  setcheck
+  setcheck,
 }) {
   const [isEdit, setIsEdit] = useState(false);
 
@@ -29,19 +28,17 @@ function ContactList({
     const editContact = contacts.find((contact) => id === contact.id);
     seteditContact(editContact);
   };
-  const checkHandler = (event,id) => {
-
+  const checkHandler = (event, id) => {
     if (event.target.checked) {
       setcheck(true);
-      setCheckContact(contact=>[...contact , id])
+      setCheckContact((contact) => [...contact, id]);
     } else {
       setcheck(false);
-     setCheckContact(contact=>contact.filter((contact) => id !== contact.id));
-
+      setCheckContact((contact) =>
+        contact.filter((contact) => id !== contact.id)
+      );
     }
-  
- 
-};
+  };
 
   return (
     <div className={styles.ContactListContainer}>
@@ -57,7 +54,7 @@ function ContactList({
             {/* <button onClick={(e)=>checkHandler(e)} value={contact.id}>
             <RiCheckboxBlankFill  color={check ? "blue" : "white"}/>
             </button> */}
-           
+
             <div className={styles.abbreviated}>
               <span>
                 {contact.name.split("")[0]}
@@ -69,12 +66,13 @@ function ContactList({
             </p>
 
             <p className={styles.userEmail}>
-              <img src={emailIcon} />
+              <MdOutlineEmail className={styles.marginRight} />
               {contact.email}
             </p>
 
             <p className={styles.phone}>
-              <img src={phoneIcon} />
+              <LuPhone className={styles.marginRight} />
+
               {contact.phone}
             </p>
             <div>
@@ -82,13 +80,13 @@ function ContactList({
                 className={styles.trash}
                 onClick={() => deleteHandlerItem(contact.id)}
               >
-                <img src={trashIcon} />
+                <GoTrash fontSize="17px" />
               </button>
               <button
                 className={styles.edit}
                 onClick={() => editHandler(contact.id)}
               >
-                <img src={edit} />
+                <FaRegEdit fontSize="17px" />
               </button>
             </div>
           </li>

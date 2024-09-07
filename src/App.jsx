@@ -10,7 +10,7 @@ function App() {
   const [contacts, setContacts] = useState(
     JSON.parse(localStorage.getItem("contacts")) || []
   );
-  const [check ,setcheck] = useState(false);
+  const [check, setcheck] = useState(false);
   const [search, setSearch] = useState("");
   const [checkContact, setCheckContact] = useState([]);
 
@@ -20,36 +20,21 @@ function App() {
   };
 
   const deleteHandler = () => {
-    if(check){
-      const newList= contacts.filter(item => item.id !== contacts.id);
+    if (check) {
+      const newList = contacts.filter((item) => item.id !== contacts.id);
       setCheckContact(newList);
-    }else{
-
+    } else {
+      setCheckContact((checkContact) =>
+        checkContact.filter((item) => item !== checkContact)
+      );
     }
 
-    newContact = contacts.filter(item => !checkContact.includes(item.id));
+    newContact = contacts.filter((item) => !checkContact.includes(item.id));
     setContacts(newContact);
-    localStorage.setItem("contacts",JSON.stringify(newContact));
-    console.log(checkContact)
-    
-    
-  //  for(let i=0; i<=contacts.length;i++){
-  //   for(let j=i ; j<=checkContact.length;j++){
-  //     if(contacts[i].id !== checkContact[j]){
-  //      newContact .push(contacts[i])
-     
-  //     }
-
-  //     }
-  //   }
-  //  console.log(newContact)
+    localStorage.setItem("contacts", JSON.stringify(newContact));
   };
 
-
-  
-
   const allHandlere = () => {
-
     setContacts(JSON.parse(localStorage.getItem("contacts")));
   };
 

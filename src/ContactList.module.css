@@ -29,15 +29,13 @@
 }
 .contactItem p {
   display: flex;
+  flex-basis: 0;
+  flex-grow: 1;
   align-items: center;
   justify-content: center;
   line-height: 1.5rem;
 }
-.name,
-.userEmail,
-.phone {
-  width: 25%;
-}
+
 .abbreviated {
   display: flex;
   justify-content: flex-start;
@@ -56,25 +54,37 @@
   text-align: center;
 }
 .contactItem button {
-  background-color: rgb(247, 164, 164);
   border: none;
   padding: 3px;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease-in;
 }
-.contactItem button:hover {
-  background-color: rgb(248, 71, 71);
-}
+
 .contactItem button img {
   margin: 0;
+}
+.marginRight {
+  margin-right: 8px;
 }
 .contactItem .edit {
   background-color: rgb(94 234 158);
   margin-left: 5px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
 }
 .contactItem .edit:hover {
   background-color: rgb(213, 247, 213);
+}
+.contactItem .trash {
+  color: red;
+  width: 30px;
+  height: 30px;
+}
+.contactItem .trash:hover {
+  background-color: rgb(248, 71, 71);
+  color: white;
 }
 .contactItem input {
   width: auto;

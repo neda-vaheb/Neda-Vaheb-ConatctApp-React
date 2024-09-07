@@ -1,6 +1,7 @@
 import styles from "./Form.module.css";
+import Input from "./input";
 function Edit({
-  editContact: { id, name, lastName, email, phone },
+  editContact: { id},
   seteditContact,
   editContact,
   contacts,
@@ -30,50 +31,8 @@ function Edit({
           <h5>Add Contact</h5>
           <button onClick={closeHandler}>X</button>
         </div>
-        <div className={styles.nameIdentity}>
-          <div>
-            <label className={styles.requir}>Name</label>
-            <input
-              type="text"
-              placeholder="Name"
-              value={name}
-              name="name"
-              onChange={changeHandler}
-            />
-          </div>
-          <div>
-            <label className={styles.requir}>Last Name</label>
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={lastName}
-              name="lastName"
-              onChange={changeHandler}
-            />
-          </div>
-        </div>
-        <div className={styles.personalInfo}>
-          <div>
-            <label className={styles.requir}>Email</label>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              name="email"
-              onChange={changeHandler}
-            />
-          </div>
-          <div>
-            <label className={styles.requir}>Phone Number</label>
-            <input
-              type="number"
-              placeholder="Phone"
-              value={phone}
-              name="phone"
-              onChange={changeHandler}
-            />
-          </div>
-        </div>
+     
+        <Input contact={editContact} setContact={seteditContact} />
 
         <div className={styles.formButtons}>
           <button className={styles.cancel} onClick={closeHandler}>

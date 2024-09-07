@@ -1,5 +1,7 @@
+import { CiSearch } from "react-icons/ci";
+
 import styles from "./Search.module.css";
-import image from "./assets/image/s.svg";
+
 function Search({ search, setSearch, contacts, setContacts }) {
   const searchHandler = () => {
     if (search) {
@@ -20,7 +22,9 @@ function Search({ search, setSearch, contacts, setContacts }) {
     <div className={styles.serachContainer}>
       <button onClick={searchHandler}>
         Search
-        <img src={image} />
+        <CiSearch />
+
+        
       </button>
 
       <input
