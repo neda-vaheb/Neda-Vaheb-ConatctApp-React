@@ -1,11 +1,11 @@
-import Edit from "./Edit";
+import Edit from "../Modals/Edit";
 import { useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
 import { GoTrash } from "react-icons/go";
 import { FaRegEdit } from "react-icons/fa";
 
-import styles from "./ContactList.module.css";
+import styles from "../Styles/ContactList.module.css";
 
 function ContactList({
   contacts,

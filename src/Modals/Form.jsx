@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 } from "uuid";
-import styles from "./Form.module.css";
-import Input from "./input";
+import styles from "../Styles/Form.module.css";
+import Input from "./Input.jsx";
 function Form({ contacts, setContacts, setShowForm }) {
   const [alert, setAlert] = useState("");
   const [contact, setContact] = useState({

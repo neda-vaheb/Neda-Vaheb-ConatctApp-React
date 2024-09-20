@@ -1,7 +1,7 @@
 import { CiSearch } from "react-icons/ci";
 
-import styles from "./Search.module.css";
-
+import styles from "../Styles/Search.module.css";
+ 
 function Search({ search, setSearch, contacts, setContacts }) {
   const searchHandler = () => {
     if (search) {

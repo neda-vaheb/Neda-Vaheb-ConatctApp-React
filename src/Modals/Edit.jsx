@@ -1,5 +1,5 @@
-import styles from "./Form.module.css";
-import Input from "./input";
+import styles from "../Styles/Form.module.css";
+import Input from "./Input.jsx";
 function Edit({
   editContact: { id },
   seteditContact,

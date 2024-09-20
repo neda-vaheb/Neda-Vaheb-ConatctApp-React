@@ -1,5 +1,5 @@
-import Form from "./Form.jsx";
-import styles from "./Header.module.css";
+import Form from "../Modals/Form.jsx";
+import styles from "../Styles/Header.module.css";
 
 function Header({ showForm, setShowForm, deleteHandler, allHandlere }) {
   const addHandler = () => {
