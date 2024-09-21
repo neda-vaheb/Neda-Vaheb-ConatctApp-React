@@ -1,19 +1,20 @@
 import Edit from "../Modals/Edit";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
 import { GoTrash } from "react-icons/go";
 import { FaRegEdit } from "react-icons/fa";
 
 import styles from "../Styles/ContactList.module.css";
+import { UserContext } from "../Context/UserContext";
 
 function ContactList({
-  contacts,
   deleteHandlerItem,
-  setContacts,
   setCheckContact,
   setcheck,
 }) {
+  const {contacts ,setContacts} = useContext(UserContext);
+
   const [isEdit, setIsEdit] = useState(false);
 
   const [editContact, seteditContact] = useState({

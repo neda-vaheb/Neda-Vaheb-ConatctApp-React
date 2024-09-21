@@ -2,7 +2,12 @@ import { useState } from "react";
 import { v4 } from "uuid";
 import styles from "../Styles/Form.module.css";
 import Input from "./Input.jsx";
-function Form({ contacts, setContacts, setShowForm }) {
+import { useContext } from "react";
+import { UserContext } from "../Context/UserContext.jsx";
+
+function Form() {
+  const { contacts ,setContacts } = useContext(UserContext);
+
   const [alert, setAlert] = useState("");
   const [contact, setContact] = useState({
     id: "",
@@ -27,10 +32,8 @@ function Form({ contacts, setContacts, setShowForm }) {
     const newContact = { ...contact, id: v4() };
     setContacts((contacts) => [...contacts, newContact]);
     localStorage.setItem("contacts", JSON.stringify(contacts));
-    setShowForm(false);
   };
   const closeHandler = () => {
-    setShowForm(false);
   };
   return (
     <div className={styles.Container}>

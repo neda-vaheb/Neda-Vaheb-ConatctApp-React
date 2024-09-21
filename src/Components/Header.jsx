@@ -18,7 +18,6 @@ function Header({ showForm, setShowForm, deleteHandler, allHandlere }) {
             All
           </button>
           <button className={styles.add} onClick={addHandler}>
-            {" "}
             Add Contact
           </button>
           {showForm && <Form />}

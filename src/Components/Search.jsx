@@ -1,8 +1,12 @@
 import { CiSearch } from "react-icons/ci";
 
 import styles from "../Styles/Search.module.css";
- 
-function Search({ search, setSearch, contacts, setContacts }) {
+import { useContext } from "react";
+import { UserContext } from "../Context/UserContext";
+
+function Search({ search, setSearch }) {
+  const {contacts ,setContacts} = useContext(UserContext);
+
   const searchHandler = () => {
     if (search) {
       const newContacts = contacts.filter(

@@ -1,15 +1,17 @@
-import { useState } from "react";
-import Header from "./Header.jsx";
-import Search from "./Search.jsx";
-import Form from "./Form.jsx";
-import ContactList from "./ContactList.jsx";
+import { useContext, useState } from "react";
+import Header from "./Components/Header.jsx";
+import Search from "./Components/Search.jsx";
+import Form from "./Components/ContactList.jsx";
+import ContactList from "./Modals/Form.jsx";
+import { UserContext } from "./Context/UserContext.jsx";
+import UserProvider from "./Context/UserContext.jsx";
 
 function App() {
+  const {contacts ,setContacts} = useContext(UserContext);
+
   let newContact = [];
   const [showForm, setShowForm] = useState(false);
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem("contacts")) || []
-  );
+
   const [check, setcheck] = useState(false);
   const [search, setSearch] = useState("");
   const [checkContact, setCheckContact] = useState([]);
@@ -39,12 +41,10 @@ function App() {
   };
 
   return (
-    <>
+    <UserProvider>
       <Search
         search={search}
         setSearch={setSearch}
-        contacts={contacts}
-        setContacts={setContacts}
       />
       <Header
         showForm={showForm}
@@ -54,23 +54,19 @@ function App() {
       />
       {showForm && (
         <Form
-          contacts={contacts}
-          setContacts={setContacts}
           setShowForm={setShowForm}
         />
       )}
       {contacts.length ? (
         <ContactList
-          contacts={contacts}
           deleteHandlerItem={deleteHandlerItem}
-          setContacts={setContacts}
           setCheckContact={setCheckContact}
           setcheck={setcheck}
         />
       ) : (
         <p className="alertText"> No Contacts</p>
       )}
-    </>
+    </UserProvider>
   );
 }
 

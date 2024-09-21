@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import styles from "../Styles/Form.module.css";
 import Input from "./Input.jsx";
+import { UserContext } from "../Context/UserContext.jsx";
+
 function Edit({
   editContact: { id },
   seteditContact,
   editContact,
-  contacts,
-  setContacts,
   setIsEdit,
 }) {
+  const {contacts ,setContacts} = useContext(UserContext);
+
   const changeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;

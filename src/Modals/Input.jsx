@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Form.module.css";
+import styles from "../Styles/Form.module.css";
+
 function Input({ contact: { id, name, lastName, email, phone }, setContact }) {
   const changeHandler = (event) => {
     const name = event.target.name;
