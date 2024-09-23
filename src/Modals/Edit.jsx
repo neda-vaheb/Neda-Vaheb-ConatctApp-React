@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "../Styles/Form.module.css";
-import Input from "./Input.jsx";
+// import Input from "./Input.jsx";
 import { UserContext } from "../Context/UserContext.jsx";
 
 function Edit({
@@ -8,20 +8,33 @@ function Edit({
   seteditContact,
   editContact,
   setIsEdit,
+  
 }) {
-  const {contacts ,setContacts} = useContext(UserContext);
-
+  const {contacts ,setContacts,setAlert} = useContext(UserContext);
   const changeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    seteditContact((contact) => ({ ...contact, [name]: value, id }));
+    seteditContact((contact) => ({ ...contact, [name]: value }));
   };
   const submitHandler = (event) => {
     event.preventDefault();
+    const emailPatern =/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+console.log(editContact)
+    if (
+      !editContact.name ||
+      !editContact.lastName ||
+      !editContact.email ||
+      !editContact.phone
+    ) {
+      setAlert("Please fill in the required fields");
+      return;
+    }
+
+    if(!emailPatern.test(editContact.email)) setAlert("please Enter the valid Email");
+    
     const newContact = { ...editContact, id };
     const newContacts = contacts.filter((contact) => contact.id !== id);
     setContacts([...newContacts, newContact]);
-    localStorage.setItem("contacts", JSON.stringify(contacts));
     setIsEdit(false);
   };
   const closeHandler = () => {
@@ -31,11 +44,53 @@ function Edit({
     <div className={styles.Container}>
       <form onSubmit={submitHandler}>
         <div className={styles.formHeader}>
-          <h5>Add Contact</h5>
+          <h5>Edit Contact</h5>
           <button onClick={closeHandler}>X</button>
         </div>
-
-        <Input contact={editContact} setContact={seteditContact} />
+        <div className={styles.nameIdentity}>
+        <div>
+          <label className={styles.requir}>Name</label>
+          <input
+            type="text"
+            placeholder="Name"
+            value={editContact.name}
+            name="name"
+            onChange={changeHandler}
+          />
+        </div>
+        <div>
+          <label className={styles.requir}>Last Name</label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={editContact.lastName}
+            name="lastName"
+            onChange={changeHandler}
+          />
+        </div>
+      </div>
+      <div className={styles.personalInfo}>
+        <div>
+          <label className={styles.requir}>Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={editContact.email}
+            name="email"
+            onChange={changeHandler}
+          />
+        </div>
+        <div>
+          <label className={styles.requir}>Phone Number</label>
+          <input
+            type="number"
+            placeholder="Phone"
+            value={editContact.phone}
+            name="phone"
+            onChange={changeHandler}
+          />
+        </div>
+      </div>
 
         <div className={styles.formButtons}>
           <button className={styles.cancel} onClick={closeHandler}>

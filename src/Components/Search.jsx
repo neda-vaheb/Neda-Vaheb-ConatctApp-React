@@ -1,30 +1,38 @@
 import { CiSearch } from "react-icons/ci";
 
 import styles from "../Styles/Search.module.css";
-import { useContext } from "react";
+import { useContext, useEffect} from "react";
 import { UserContext } from "../Context/UserContext";
 
-function Search({ search, setSearch }) {
-  const {contacts ,setContacts} = useContext(UserContext);
+import mockContacts from "../db.json"
 
-  const searchHandler = () => {
-    if (search) {
-      const newContacts = contacts.filter(
-        (contact) =>
-          contact.name.toLowerCase().includes(search) ||
-          contact.lastName.toLowerCase().includes(search) ||
-          contact.email.toLowerCase().includes(search) ||
-          contact.phone.toLowerCase().includes(search)
-      );
-      setContacts(newContacts);
-      setSearch("");
-    } else {
-      setContacts(JSON.parse(localStorage.get("contacts")));
-    }
-  };
+function Search() {
+  const {contacts ,setContacts,search,setSearch} = useContext(UserContext);
+  useEffect(()=>{
+    const searchHandler = () => {
+
+        if(!search){
+         setContacts(mockContacts)
+          return;
+        }
+      
+        const newContacts = contacts.filter(
+          (contact) =>
+            contact.name.toLowerCase().includes(search) ||
+            contact.lastName.toLowerCase().includes(search) ||
+            contact.email.toLowerCase().includes(search) ||
+            contact.phone.toLowerCase().includes(search)
+        );
+       setContacts(newContacts);
+       
+      
+    };
+    searchHandler();
+  },[search])
+
   return (
     <div className={styles.serachContainer}>
-      <button onClick={searchHandler}>
+      <button>
         Search
         <CiSearch className={styles.SearchIcon}/>
       </button>
@@ -35,7 +43,9 @@ function Search({ search, setSearch }) {
         value={search}
         onChange={(e) => setSearch(e.target.value.toLowerCase().trim())}
       />
+       
     </div>
+  
   );
 }
 

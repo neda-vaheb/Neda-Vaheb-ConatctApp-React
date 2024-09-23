@@ -8,12 +8,8 @@ import { FaRegEdit } from "react-icons/fa";
 import styles from "../Styles/ContactList.module.css";
 import { UserContext } from "../Context/UserContext";
 
-function ContactList({
-  deleteHandlerItem,
-  setCheckContact,
-  setcheck,
-}) {
-  const {contacts ,setContacts} = useContext(UserContext);
+function ContactList() {
+  const {contacts ,setContacts,setcheck,setCheckContact} = useContext(UserContext);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -24,11 +20,17 @@ function ContactList({
     email: "",
     phone: "",
   });
+
   const editHandler = (id) => {
     setIsEdit(true);
     const editContact = contacts.find((contact) => id === contact.id);
     seteditContact(editContact);
   };
+  const deleteHandlerItem = (id) => {
+    const newContacts = contacts.filter((contact) => contact.id !== id);
+    setContacts(newContacts);
+  };
+
   const checkHandler = (event, id) => {
     if (event.target.checked) {
       setcheck(true);
@@ -98,8 +100,6 @@ function ContactList({
           editContact={editContact}
           seteditContact={seteditContact}
           setIsEdit={setIsEdit}
-          contacts={contacts}
-          setContacts={setContacts}
         />
       )}
     </div>

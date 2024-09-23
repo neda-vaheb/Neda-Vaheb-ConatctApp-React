@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
-function deleteModal() {
-    const [checkDelete , setCheckDelete]=useState(false);
+function DeleteModal({setCheckDelete ,checkDelete}) {
     const deleteModalHandler = ()=>{
 setCheckDelete(false);
     }
@@ -13,11 +12,11 @@ setCheckDelete(false);
             Are you sure To Delet
         </p>
         <button >Yes</button>
-        <button>No</button>
+        <button onClick={()=>setCheckDelete(false)}>No</button>
 
       </div>
     </div>
   )
 }
 
-export default deleteModal
+export default DeleteModal

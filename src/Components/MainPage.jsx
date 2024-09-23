@@ -6,6 +6,8 @@ import Form from "../Modals/Form.jsx";
 import { UserContext } from "../Context/UserContext.jsx";
 import UserProvider from "../Context/UserContext.jsx";
 import axios from "axios";
+import mockData from"../db.json"
+import DeleteModal from "../Modals/deleteModal.jsx";
 
 function MainPage() {
   const {
@@ -14,20 +16,24 @@ function MainPage() {
     showForm,
     check,
     checkContact,
-    setCheckContact,
+    setCheckContact
   } = useContext(UserContext);
-// useEffect(()=>{
-// axios.get("localhost:3000").then()
-// },[])
+  useEffect(()=>{
+    const fetchcontact = ()=>{
+      for(let i=0 ; i<mockData.length ; i++){
+        axios.get(`http://localhost:3000/${i}`).then(res=>setContacts(contacts=>[...contacts , res.data]));
+      }
+      console.log(contacts);
+    }
+    fetchcontact();
+
+  },[])
   let newContact = [];
   const [checkDelete, setCheckDelete] = useState(false);
 
-  const deleteHandlerItem = (id) => {
-    const newContacts = contacts.filter((contact) => contact.id !== id);
-    setContacts(newContacts);
-  };
 
   const deleteHandler = () => {
+    
     if (check) {
       const newList = contacts.filter((item) => item.id !== contacts.id);
       setCheckContact(newList);
@@ -42,17 +48,15 @@ function MainPage() {
     localStorage.setItem("contacts", JSON.stringify(newContact));
   };
 
-  const allHandlere = () => {
-    setContacts(JSON.parse(localStorage.getItem("contacts")));
-  };
+  
 
   return (
     <UserProvider>
       <Search />
-      <Header allHandlere={allHandlere} deleteHandler={deleteHandler} />
-      {showForm && <Form />}
-      {!! contacts.length ? (
-        <ContactList deleteHandlerItem={deleteHandlerItem} />
+      <Header deleteHandler={deleteHandler} />
+      {showForm && <Form  />}
+      {!!contacts.length ? (
+        <ContactList/>
       ) : (
         <p className="alertText"> No Contacts</p>
       )}

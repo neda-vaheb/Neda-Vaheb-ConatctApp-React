@@ -1,7 +1,7 @@
 [{
     "id":1,
     "name":"Neda",
-    "lastName":"vaheb",
+    "lastName":"Vaheb",
     "email":"n.vaheb.dev@gmail.com",
     "phone": "0912121212"
 
@@ -9,7 +9,7 @@
 {
     "id":2,
     "name":"Mehrdad",
-    "lastName":"Bpzorgzadeh",
+    "lastName":"Bozorgzadeh",
     "email":"mr.bozorgzadeh@gmail.com",
     "phone": "0912141414"
 
