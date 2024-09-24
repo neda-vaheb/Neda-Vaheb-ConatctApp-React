@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import Form from "../Modals/Form.jsx";
-import styles from "../Styles/Header.module.css";
 import { UserContext } from "../Context/UserContext.jsx";
 
-function Header({  deleteHandler, allHandlere }) {
-  const {showForm,setShowForm} = useContext(UserContext);
- 
+import Form from "../Modals/Form.jsx";
+import styles from "../Styles/Header.module.css";
+
+function Header({ allHandlere }) {
+  const { showForm, setShowForm, deleteHandler } = useContext(UserContext);
+
   const addHandler = () => {
     setShowForm(true);
   };

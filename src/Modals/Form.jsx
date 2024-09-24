@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 } from "uuid";
 import styles from "../Styles/Form.module.css";
-// import Input from "./Input.jsx";
+import Input from "./Input.jsx";
 import { useContext } from "react";
 import { UserContext } from "../Context/UserContext.jsx";
 
@@ -11,13 +11,12 @@ function Form() {
   const[contact ,setContact] = useState({
     id:"",
     name:"",
-    LastName:"",
+    lastName:"",
     email:"",
     phone:""
   })
   const submitHandler = (event) => {
     event.preventDefault();
-   
     const emailPatern =/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
     if (
       !contact.name ||
@@ -39,11 +38,7 @@ function Form() {
   const closeHandler = () => {
     setShowForm(false)
   };
-  const changeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setContact((contact) => ({ ...contact, [name]: value }));
-  };
+
   return (
     <div className={styles.Container}>
       <form onSubmit={submitHandler}>
@@ -51,50 +46,8 @@ function Form() {
           <h5>Add Contact</h5>
           <button onClick={closeHandler}>X</button>
         </div>
-        <div className={styles.nameIdentity}>
-        <div>
-          <label className={styles.requir}>Name</label>
-          <input
-            type="text"
-            placeholder="Name"
-            value={contact.name}
-            name="name"
-            onChange={changeHandler}
-          />
-        </div>
-        <div>
-          <label className={styles.requir}>Last Name</label>
-          <input
-            type="text"
-            placeholder="Last Name"
-            value={contact.lastName}
-            name="lastName"
-            onChange={changeHandler}
-          />
-        </div>
-      </div>
-      <div className={styles.personalInfo}>
-        <div>
-          <label className={styles.requir}>Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            value={contact.email}
-            name="email"
-            onChange={changeHandler}
-          />
-        </div>
-        <div>
-          <label className={styles.requir}>Phone Number</label>
-          <input
-            type="number"
-            placeholder="Phone"
-            value={contact.phone}
-            name="phone"
-            onChange={changeHandler}
-          />
-        </div>
-      </div>
+        <Input contact={contact} setContact={setContact}/>
+     
 
         {alert && <p className={styles.alert}>{alert}</p>}
         <div className={styles.formButtons}>

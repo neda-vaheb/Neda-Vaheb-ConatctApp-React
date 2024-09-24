@@ -1,15 +1,15 @@
-import Edit from "../Modals/Edit";
 import { useContext, useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
 import { GoTrash } from "react-icons/go";
 import { FaRegEdit } from "react-icons/fa";
-
-import styles from "../Styles/ContactList.module.css";
 import { UserContext } from "../Context/UserContext";
 
+import Edit from "../Modals/Edit";
+import styles from "../Styles/ContactList.module.css";
+
 function ContactList() {
-  const {contacts ,setContacts,setcheck,setCheckContact} = useContext(UserContext);
+  const { contacts, setContacts, checkHandler } = useContext(UserContext);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -20,7 +20,6 @@ function ContactList() {
     email: "",
     phone: "",
   });
-
   const editHandler = (id) => {
     setIsEdit(true);
     const editContact = contacts.find((contact) => id === contact.id);
@@ -29,18 +28,6 @@ function ContactList() {
   const deleteHandlerItem = (id) => {
     const newContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(newContacts);
-  };
-
-  const checkHandler = (event, id) => {
-    if (event.target.checked) {
-      setcheck(true);
-      setCheckContact((contact) => [...contact, id]);
-    } else {
-      setcheck(false);
-      setCheckContact((contact) =>
-        contact.filter((contact) => id !== contact.id)
-      );
-    }
   };
 
   return (

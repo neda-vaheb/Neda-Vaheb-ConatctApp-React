@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "../Styles/Form.module.css";
-// import Input from "./Input.jsx";
+import Input from "./Input.jsx";
 import { UserContext } from "../Context/UserContext.jsx";
 
 function Edit({
@@ -10,14 +10,12 @@ function Edit({
   setIsEdit,
   
 }) {
-  const {contacts ,setContacts,setAlert} = useContext(UserContext);
-  const changeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    seteditContact((contact) => ({ ...contact, [name]: value }));
-  };
+  const {contacts ,setContacts,setAlert,alert} = useContext(UserContext);
+ 
   const submitHandler = (event) => {
+
     event.preventDefault();
+    setAlert("")
     const emailPatern =/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
 console.log(editContact)
     if (
@@ -47,7 +45,7 @@ console.log(editContact)
           <h5>Edit Contact</h5>
           <button onClick={closeHandler}>X</button>
         </div>
-        <div className={styles.nameIdentity}>
+        {/* <div className={styles.nameIdentity}>
         <div>
           <label className={styles.requir}>Name</label>
           <input
@@ -90,8 +88,9 @@ console.log(editContact)
             onChange={changeHandler}
           />
         </div>
-      </div>
-
+      </div> */}
+<Input contact={editContact} setContact={seteditContact}/>
+{alert && <p className={styles.alert}>{alert}</p>}
         <div className={styles.formButtons}>
           <button className={styles.cancel} onClick={closeHandler}>
             Cancel
