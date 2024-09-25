@@ -3,9 +3,10 @@ import { UserContext } from "../Context/UserContext.jsx";
 
 import Form from "../Modals/Form.jsx";
 import styles from "../Styles/Header.module.css";
+import DeleteModal from "../Modals/deleteModal.jsx";
 
-function Header({ allHandlere }) {
-  const { showForm, setShowForm, deleteHandler } = useContext(UserContext);
+function Header() {
+  const { checkDelete ,showForm, setShowForm,  deleteHandlerModal } = useContext(UserContext);
 
   const addHandler = () => {
     setShowForm(true);
@@ -16,12 +17,13 @@ function Header({ allHandlere }) {
       <div className={styles.headerContainer}>
         <h3>Contacts</h3>
         <div className={styles.ButtonContainer}>
-          <button className={styles.delete} onClick={deleteHandler}>
+          <button className={styles.delete} onClick={deleteHandlerModal}>
             Delete
           </button>
-          <button className={styles.add} onClick={allHandlere}>
+          {checkDelete && <DeleteModal/>}
+          {/* <button className={styles.add} onClick={allHandlere}>
             All
-          </button>
+          </button> */}
           <button className={styles.add} onClick={addHandler}>
             Add Contact
           </button>

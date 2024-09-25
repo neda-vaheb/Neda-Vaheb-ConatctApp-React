@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react';
-import mockContacts from "../db.json";
 
 export const UserContext = createContext();
 
@@ -11,6 +10,9 @@ const[showForm ,setShowForm] =useState(false);
  const[checkContact,setCheckContact]= useState([]);
  const[search,setSearch]= useState("");
  const[alert,setAlert]= useState("");
+ const [checkDelete, setCheckDelete] = useState(false);
+
+
 let newContact = []
  const checkHandler = (event, id) => {
   if (event.target.checked) {
@@ -23,8 +25,11 @@ let newContact = []
     );
   }
 };
+const deleteHandlerModal =()=>{
+  setCheckDelete(true)
+}
 const deleteHandler = () => {
- 
+
   if (check) {
     const newList = contacts.filter((item) => item.id !== contacts.id);
     setCheckContact(newList);
@@ -37,12 +42,13 @@ const deleteHandler = () => {
 
   newContact = contacts.filter((item) => !checkContact.includes(item.id));
   setContacts(newContact);
+  setCheckDelete(false)
 
 };
 
   return (
     
-    <UserContext.Provider value={{contacts,alert,setAlert,checkHandler,deleteHandler,setContacts,showForm,setShowForm,check,setcheck,checkContact,setCheckContact,search,setSearch}}>
+    <UserContext.Provider value={{ deleteHandlerModal,checkDelete,setCheckDelete,contacts,alert,setAlert,checkHandler,deleteHandler,setContacts,showForm,setShowForm,check,setcheck,checkContact,setCheckContact,search,setSearch}}>
       {children}
     </UserContext.Provider>
       

@@ -21,7 +21,7 @@ function MainPage() {
     };
     fetchcontact();
   }, []);
-  const [checkDelete, setCheckDelete] = useState(false);
+  
   return (
     <UserProvider>
       <Search />

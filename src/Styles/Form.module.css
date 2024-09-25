@@ -109,6 +109,56 @@ input:focus {
 .alert {
   color: rgb(248, 101, 101);
 }
+.deleteModalContainer{
+  width: 400px;
+  height: 150px;
+  margin: auto;
+  background-color:rgb(147 150 242 / 80%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.deleteModalContainer p{
+  margin: 20px;
+}
+.closeHandler{
+  border: 1px solid #0f0443;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: #04215e;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+
+
+.deleteControler{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+.deleteControler button{
+  width: 70px;
+  padding: 10px 6px;
+  margin-right: 17px;
+  border: none;
+transition: all 0.3s ease-in;
+background-color: white;
+border-radius: 8px;
+}
+.deleteControler button:last-child{
+  background-color: rgb(243, 106, 106);
+
+}
+.deleteControler button:hover , .closeHandler:hover{
+  opacity: 0.5;
+}
 @media (max-width: 750px) {
   form {
     width: 500px;
