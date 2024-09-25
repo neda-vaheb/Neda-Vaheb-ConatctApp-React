@@ -15,9 +15,8 @@ function Edit({
   const submitHandler = (event) => {
 
     event.preventDefault();
-    setAlert("")
+    setAlert("");
     const emailPatern =/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
-console.log(editContact)
     if (
       !editContact.name ||
       !editContact.lastName ||
