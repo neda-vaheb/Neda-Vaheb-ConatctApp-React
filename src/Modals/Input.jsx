@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import styles from "../Styles/Form.module.css";
 
 function Input({ contact: { name, lastName, email, phone, id }, setContact }) {
