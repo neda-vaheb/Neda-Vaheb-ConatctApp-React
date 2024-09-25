@@ -17,6 +17,7 @@ function MainPage() {
           .get(`http://localhost:3000/${i}`)
           .then((res) => setContacts((contacts) => [...contacts, res.data]));
       }
+      localStorage.setItem("contacts" , JSON.stringify(contacts))
     };
     fetchcontact();
   }, []);

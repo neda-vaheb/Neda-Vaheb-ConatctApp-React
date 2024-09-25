@@ -4,7 +4,7 @@ import { UserContext } from "../Context/UserContext.jsx";
 import Form from "../Modals/Form.jsx";
 import styles from "../Styles/Header.module.css";
 
-function Header({ allHandlere }) {
+function Header() {
   const { showForm, setShowForm, deleteHandler } = useContext(UserContext);
 
   const addHandler = () => {
@@ -19,9 +19,7 @@ function Header({ allHandlere }) {
           <button className={styles.delete} onClick={deleteHandler}>
             Delete
           </button>
-          <button className={styles.add} onClick={allHandlere}>
-            All
-          </button>
+        
           <button className={styles.add} onClick={addHandler}>
             Add Contact
           </button>

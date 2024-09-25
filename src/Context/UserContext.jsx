@@ -16,7 +16,7 @@ export const UserContext = createContext();
 
 function UserProvider({children}) {
 // const [state ,dispatch]=useReducer(reducer , initialState)
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([]|| localStorage.getItem(JSON.parse("contatcs")));
 const[showForm ,setShowForm] =useState(false);
   const[check ,setcheck] = useState(false);
  const[checkContact,setCheckContact]= useState([]);

@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../Context/UserContext.jsx";
 
 function Form() {
-  const { setShowForm,setContacts,alert,setAlert} = useContext(UserContext);
+  const { setShowForm,setContacts,alert,setAlert,contacts} = useContext(UserContext);
  
   const[contact ,setContact] = useState({
     id:"",
@@ -33,6 +33,7 @@ function Form() {
     setAlert("");
     const newContact = { ...contact, id: v4() };
     setContacts((contacts) => [...contacts, newContact]);
+    localStorage.setItem("contacts" , JSON.stringify(contacts));
     setShowForm(false)
   };
   const closeHandler = () => {
