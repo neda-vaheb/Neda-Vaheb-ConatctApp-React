@@ -3,21 +3,14 @@ import styles from "../Styles/Form.module.css";
 import Input from "./Input.jsx";
 import { UserContext } from "../Context/UserContext.jsx";
 
-function Edit({
-  editContact: { id },
-  seteditContact,
-  editContact,
-  setIsEdit,
-  
-}) {
-  const {contacts ,setContacts,setAlert,alert} = useContext(UserContext);
- 
-  const submitHandler = (event) => {
+function Edit({ editContact: { id }, seteditContact, editContact, setIsEdit }) {
+  const { contacts, setContacts, setAlert, alert } = useContext(UserContext);
 
+  const submitHandler = (event) => {
     event.preventDefault();
-    setAlert("")
-    const emailPatern =/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
-console.log(editContact)
+    setAlert("");
+    const emailPatern = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    console.log(editContact);
     if (
       !editContact.name ||
       !editContact.lastName ||
@@ -28,8 +21,9 @@ console.log(editContact)
       return;
     }
 
-    if(!emailPatern.test(editContact.email)) setAlert("please Enter the valid Email");
-    
+    if (!emailPatern.test(editContact.email))
+      setAlert("please Enter the valid Email");
+
     const newContact = { ...editContact, id };
     const newContacts = contacts.filter((contact) => contact.id !== id);
     setContacts([...newContacts, newContact]);
@@ -89,8 +83,8 @@ console.log(editContact)
           />
         </div>
       </div> */}
-<Input contact={editContact} setContact={seteditContact}/>
-{alert && <p className={styles.alert}>{alert}</p>}
+        <Input contact={editContact} setContact={seteditContact} />
+        {alert && <p className={styles.alert}>{alert}</p>}
         <div className={styles.formButtons}>
           <button className={styles.cancel} onClick={closeHandler}>
             Cancel

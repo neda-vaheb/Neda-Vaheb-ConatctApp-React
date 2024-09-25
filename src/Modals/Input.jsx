@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from "../Styles/Form.module.css";
 import { UserContext } from "../Context/UserContext";
 
-function Input({contact:{name ,lastName , email , phone ,id} ,setContact}) {
+function Input({ contact: { name, lastName, email, phone, id }, setContact }) {
   const changeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;

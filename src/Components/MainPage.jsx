@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Header from "./Header.jsx";
 import Search from "./Search.jsx";
 import ContactList from "./ContactList.jsx";
@@ -7,7 +7,6 @@ import { UserContext } from "../Context/UserContext.jsx";
 import UserProvider from "../Context/UserContext.jsx";
 import axios from "axios";
 import mockData from "../db.json";
-import DeleteModal from "../Modals/deleteModal.jsx";
 
 function MainPage() {
   const { contacts, setContacts, showForm } = useContext(UserContext);
@@ -21,7 +20,7 @@ function MainPage() {
     };
     fetchcontact();
   }, []);
-  
+
   return (
     <UserProvider>
       <Search />

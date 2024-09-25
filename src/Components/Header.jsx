@@ -6,7 +6,8 @@ import styles from "../Styles/Header.module.css";
 import DeleteModal from "../Modals/deleteModal.jsx";
 
 function Header() {
-  const { checkDelete ,showForm, setShowForm,  deleteHandlerModal } = useContext(UserContext);
+  const { checkDelete, showForm, setShowForm, deleteHandlerModal } =
+    useContext(UserContext);
 
   const addHandler = () => {
     setShowForm(true);
@@ -20,7 +21,7 @@ function Header() {
           <button className={styles.delete} onClick={deleteHandlerModal}>
             Delete
           </button>
-          {checkDelete && <DeleteModal/>}
+          {checkDelete && <DeleteModal />}
           {/* <button className={styles.add} onClick={allHandlere}>
             All
           </button> */}

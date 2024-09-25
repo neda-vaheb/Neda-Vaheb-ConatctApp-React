@@ -6,18 +6,18 @@ import { useContext } from "react";
 import { UserContext } from "../Context/UserContext.jsx";
 
 function Form() {
-  const { setShowForm,setContacts,alert,setAlert} = useContext(UserContext);
- 
-  const[contact ,setContact] = useState({
-    id:"",
-    name:"",
-    lastName:"",
-    email:"",
-    phone:""
-  })
+  const { setShowForm, setContacts, alert, setAlert } = useContext(UserContext);
+
+  const [contact, setContact] = useState({
+    id: "",
+    name: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  });
   const submitHandler = (event) => {
     event.preventDefault();
-    const emailPatern =/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    const emailPatern = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
     if (
       !contact.name ||
       !contact.lastName ||
@@ -28,15 +28,16 @@ function Form() {
       return;
     }
 
-    if(!emailPatern.test(contact.email)) setAlert("please Enter the valid Email");
-    
+    if (!emailPatern.test(contact.email))
+      setAlert("please Enter the valid Email");
+
     setAlert("");
     const newContact = { ...contact, id: v4() };
     setContacts((contacts) => [...contacts, newContact]);
-    setShowForm(false)
+    setShowForm(false);
   };
   const closeHandler = () => {
-    setShowForm(false)
+    setShowForm(false);
   };
 
   return (
@@ -46,8 +47,7 @@ function Form() {
           <h5>Add Contact</h5>
           <button onClick={closeHandler}>X</button>
         </div>
-        <Input contact={contact} setContact={setContact}/>
-     
+        <Input contact={contact} setContact={setContact} />
 
         {alert && <p className={styles.alert}>{alert}</p>}
         <div className={styles.formButtons}>
